@@ -23,7 +23,7 @@ You get:
 ## Install
 
 ```bash
-$ npm install --save hapi-response-errors
+$ npm install --save hapi-boom-codes
 ```
 
 
