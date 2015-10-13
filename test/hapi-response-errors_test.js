@@ -51,7 +51,6 @@ describe('hapi-response-errors', function() {
   it('should include the `code` field in the response', function(done) {
     server.inject('/', function(res) {
       var result = res.result;
-      console.log("result:",result);
 
       result.should.have.property('statusCode');
       result.statusCode.should.equal(400);
