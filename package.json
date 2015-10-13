@@ -1,7 +1,7 @@
 {
   "name": "hapi-boom-codes",
   "description": "Your boom hapi response objects need an error `code` field.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "index",
   "repository": "https://github.com/kamilwaheed/hapi-boom-codes.git",
