@@ -1,0 +1,37 @@
+{
+  "name": "hapi-boom-codes",
+  "description": "Your boom hapi response objects need an error `code` field.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index",
+  "repository": "https://github.com/kamilwaheed/hapi-boom-codes.git",
+  "author": {
+    "name": "Kamil Waheed",
+    "email": "kamilwaheed@icloud.com"
+  },
+  "keywords": [
+    "hapi",
+    "plugin",
+    "boom",
+    "error",
+    "code"
+  ],
+  "devDependencies": {
+    "boom": "^2.9.0",
+    "gulp": "^3.8.10",
+    "gulp-istanbul": "^0.5.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.5.1",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^0.6.6",
+    "hapi": "^8.x.x",
+    "jshint-stylish": "^1.0.0",
+    "should": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=0.10.22"
+  },
+  "scripts": {
+    "test": "gulp test"
+  }
+}
