@@ -41,7 +41,7 @@ describe('hapi-response-errors', function() {
         if (err) {
           throw err;
         }
-        
+
         done();
       });
 
@@ -64,5 +64,39 @@ describe('hapi-response-errors', function() {
       done();
     });
   });
-  
+
+  describe('multiple onPreResponse handlers', function () {
+    var calls = 0;
+
+    // add a second onPreResponse handler
+    before(function (done) {
+      var testPlugin = {
+        register: function (server, options, next) {
+          server.ext('onPreResponse', function(request, reply) {
+            calls += 1;
+            return reply.continue();
+          });
+
+          return next();
+        }
+      };
+      testPlugin.register.attributes = { name: 'test' };
+
+      server.register(testPlugin, function (err) {
+        if (err) {
+          throw err;
+        }
+
+        done();
+      })
+    });
+
+    it('should call the second plugin', function (done) {
+      server.inject('/', function(res) {
+        calls.should.equal(1);
+
+        done();
+      });
+    });
+  });
 });
