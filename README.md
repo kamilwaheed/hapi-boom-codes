@@ -3,8 +3,8 @@
 You do:
 
 ```javascript
-var hapiRouteController = function(request, reply) {
-  reply(Boom.badRequest('The email address looks funny.', { code: 'InvalidEmail' }));
+var hapiRouteController = (request, h) => {
+  return Boom.badRequest('The email address looks funny.', { code: 'InvalidEmail' });
 }
 ```
 
@@ -45,6 +45,9 @@ Boom.forbidden([message], { code: 'NoDirtyBusiness' });
 
  - Initial commit
 
+### v2.0.0 (06/11/2018)
+
+ - Hapi 17 support
 
 ## License
 

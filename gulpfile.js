@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var watching;
 
@@ -13,8 +13,9 @@ var paths = {
 
 gulp.task('lint', function () {
   return gulp.src(paths.lint)
-    .pipe(plugins.jshint('.jshintrc'))
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format())
+    .pipe(plugins.eslint.failAfterError());
 });
 
 gulp.task('istanbul', function (cb) {
@@ -22,10 +23,10 @@ gulp.task('istanbul', function (cb) {
     .pipe(plugins.istanbul()) // Covering files
     .pipe(plugins.istanbul.hookRequire()) // Force `require` to return covered files
     .on('finish', function () {
-      gulp.src(paths.tests, {cwd: __dirname})
+      gulp.src(paths.tests, { cwd: __dirname })
         .pipe(plugins.plumber())
         .pipe(plugins.mocha())
-        .on('error', function() {
+        .on('error', function () {
           if (watching) {
             this.emit('end');
           } else {
@@ -33,7 +34,7 @@ gulp.task('istanbul', function (cb) {
           }
         })
         .pipe(plugins.istanbul.writeReports()) // Creating the reports after tests runned
-        .on('finish', function() {
+        .on('finish', function () {
           process.chdir(__dirname);
           cb();
         });
